@@ -1,0 +1,40 @@
+{
+  "name": "%COMPOSER_NAMESPACE%/%PROJECT_SLUG%",
+  "description": "todo",
+  "keywords": ["wordpress", "plugin"],
+  "license": "%LICENCE%",
+  "authors": [
+    {
+      "name": "%AUTHOR_NAME%",
+      "email": "%AUTHOR_EMAIL%"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "config": {
+    "vendor-dir": "includes/vendor",
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "%PSR4_NAMESPACE%\\": "src/Core"
+    },
+    "files": ["src/%PROJECT_SLUG%_plugin_helper.php"]
+  },
+  "require": {
+
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org/"
+    }
+  ]
+}
