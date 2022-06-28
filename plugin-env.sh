@@ -17,7 +17,7 @@ PROJECT_GITHUB="todo"
 #
 COMPOSER_NAMESPACE="wkhayrattee"
 ## Should be CamelCase
-PSR_AUTOLOAD_NAMESPACE="MyCustomPlugin"
+PSR4_NAMESPACE="MyCustomPlugin"
 PHP_CONSTANT_PREFIX="MY_CUSTOM_PLUGIN"
 ## to house handy procedural functions
 HELPER_FILE_NAME="${PROJECT_SLUG}-plugin-helper"
