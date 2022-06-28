@@ -26,3 +26,4 @@ LICENCE="GPL-3.0-only"
 LICENCE_URI="https://www.gnu.org/licenses/gpl-3.0.html"
 #
 WP_MINIMUM_VERSION="5.9.3"
+WP_TESTED_UPTO_VERSION="6.0"
