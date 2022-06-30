@@ -69,8 +69,33 @@ if [ -e "$PLUGIN_DIR/readme.txt" ]; then
   " \
   "$PLUGIN_DIR/readme.txt"
 
-  printf "[info] Renamed key:  {{PROJECT_SLUG}}\n"
+  printf "[info] Renamed all keys for:  readme.txt\n"
 else
     printf "[error] Cannot find file readme.txt at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
+## Rename keys in file: template.php
+#
+TEMPLATE_PHP_FILE="$PROJECT_SLUG.php"
+if [ -e "$PLUGIN_DIR/$TEMPLATE_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $PROJECT_SLUG.php \n\\n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PROJECT_NAME%|$PROJECT_NAME|g; \
+   s|%AUTHOR_NAME%|$AUTHOR_NAME|g; \
+   s|%AUTHOR_URI%|$AUTHOR_URI|g; \
+   s|%WP_MINIMUM_VERSION%|$WP_MINIMUM_VERSION|g; \
+   s|%LICENCE%|$LICENCE|g; \
+   s|%LICENCE_URI%|$LICENCE_URI|g; \
+   s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+  " \
+  "$PLUGIN_DIR/$TEMPLATE_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $TEMPLATE_PHP_FILE\n"
+else
+    printf "[error] Cannot find file $TEMPLATE_PHP_FILE at: %s" "$PLUGIN_DIR"
     exit
 fi
