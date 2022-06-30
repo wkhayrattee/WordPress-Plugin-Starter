@@ -56,7 +56,7 @@ fi
 ## Rename keys in file: readme.txt
 #
 if [ -e "$PLUGIN_DIR/readme.txt" ]; then
-  printf "[info] Scanning inside file readme.txt \n\\n"
+  printf "[info] Scanning inside file readme.txt \n"
 
   sed $PORTABLE_SED_OPTION \
   "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
@@ -69,7 +69,7 @@ if [ -e "$PLUGIN_DIR/readme.txt" ]; then
   " \
   "$PLUGIN_DIR/readme.txt"
 
-  printf "[info] Renamed all keys for:  readme.txt\n"
+  printf "[info] Renamed all keys for:  readme.txt\n\n"
 else
     printf "[error] Cannot find file readme.txt at: %s" "$PLUGIN_DIR"
     exit
@@ -79,7 +79,7 @@ fi
 #
 TEMPLATE_PHP_FILE="$PROJECT_SLUG.php"
 if [ -e "$PLUGIN_DIR/$TEMPLATE_PHP_FILE" ]; then
-  printf "[info] Scanning inside file $PROJECT_SLUG.php \n\\n"
+  printf "[info] Scanning inside file $TEMPLATE_PHP_FILE \n"
 
   sed $PORTABLE_SED_OPTION \
   "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
@@ -94,8 +94,26 @@ if [ -e "$PLUGIN_DIR/$TEMPLATE_PHP_FILE" ]; then
   " \
   "$PLUGIN_DIR/$TEMPLATE_PHP_FILE"
 
-  printf "[info] Renamed all keys for:  $TEMPLATE_PHP_FILE\n"
+  printf "[info] Renamed all keys for:  $TEMPLATE_PHP_FILE\n\n"
 else
     printf "[error] Cannot find file $TEMPLATE_PHP_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
+## Rename keys in file: uninstall.php
+#
+UNINSTALL_PHP_FILE="uninstall.php"
+if [ -e "$PLUGIN_DIR/$UNINSTALL_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $UNINSTALL_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+  " \
+  "$PLUGIN_DIR/$UNINSTALL_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $UNINSTALL_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $UNINSTALL_PHP_FILE at: %s" "$PLUGIN_DIR"
     exit
 fi
