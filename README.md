@@ -7,7 +7,7 @@ This is a helper project to "help" me quickly generate the bare minimum of a cus
 
 By adjusting some specific details for the intended custom plugin via [this environment file aka the `plugin-env` file](plugin-env.sh), you are good to go with a plugin ready to be activated (although it will not do much at that point obviously).
 
-The plugin template skeleton has been devised to adhere closely to [the WordPress plugin guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/) - thus increasing its odds of getting accepted to be listed on the WordPress-dot-ORG plugin directory, if your aim is to make it available there.
+The plugin template skeleton has been devised to adhere closely to [the WordPress plugin guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/) - thus increasing its odds of getting accepted to be listed on the WordPress-dot-ORG plugin directory, if your aim is [to make it available there](https://wordpress.org/plugins/developers/add/).
 
 ## How To Use
 
