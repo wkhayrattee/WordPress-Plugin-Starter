@@ -12,7 +12,7 @@ AUTHOR_URI="https://github.com/wkhayrattee"
 ### should be in a valid slug
 PROJECT_SLUG="my-custom-plugin-name"
 PROJECT_NAME="My Custom Plugin Name"
-PROJECT_GITHUB="todo"
+PROJECT_GITHUB="todo_github_url"
 #
 COMPOSER_NAMESPACE="wkhayrattee"
 ## Should be CamelCase
