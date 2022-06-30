@@ -127,7 +127,6 @@ if [ -e "$PLUGIN_DIR/$COMPOSER_JSON_FILE" ]; then
   sed $PORTABLE_SED_OPTION \
   "s|%COMPOSER_NAMESPACE%|$COMPOSER_NAMESPACE|g; \
    s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
-   s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
    s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
    s|%AUTHOR_NAME%|$AUTHOR_NAME|g; \
    s|%AUTHOR_EMAIL%|$AUTHOR_EMAIL|g; \
@@ -139,5 +138,23 @@ if [ -e "$PLUGIN_DIR/$COMPOSER_JSON_FILE" ]; then
   printf "[info] Renamed all keys for:  $COMPOSER_JSON_FILE\n\n"
 else
     printf "[error] Cannot find file $COMPOSER_JSON_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
+## Rename keys in file: Enum.php
+#
+ENUM_PHP_FILE="Enum.php"
+if [ -e "$PLUGIN_DIR/src/Core/$ENUM_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $ENUM_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+  " \
+  "$PLUGIN_DIR/src/Core/$ENUM_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $ENUM_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $ENUM_PHP_FILE at: %s" "$PLUGIN_DIR"
     exit
 fi
