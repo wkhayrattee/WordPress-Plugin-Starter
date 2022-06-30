@@ -52,3 +52,25 @@ else
     printf "[error] Cannot find js file template.js at: %s" "$PLUGIN_DIR/assets/js/"
     exit
 fi
+#
+## Rename keys in file: readme.txt
+#
+if [ -e "$PLUGIN_DIR/readme.txt" ]; then
+  printf "[info] Scanning inside file readme.txt \n\\n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%AUTHOR_NAME%|$AUTHOR_NAME|g; \
+   s|%WP_MINIMUM_VERSION%|$WP_MINIMUM_VERSION|g; \
+   s|%WP_TESTED_UPTO_VERSION%|$WP_TESTED_UPTO_VERSION|g; \
+   s|%LICENCE%|$LICENCE|g; \
+   s|%LICENCE_URI%|$LICENCE_URI|g; \
+   s|%PROJECT_GITHUB%|$PROJECT_GITHUB|g; \
+  " \
+  "$PLUGIN_DIR/readme.txt"
+
+  printf "[info] Renamed key:  {{PROJECT_SLUG}}\n"
+else
+    printf "[error] Cannot find file readme.txt at: %s" "$PLUGIN_DIR"
+    exit
+fi
