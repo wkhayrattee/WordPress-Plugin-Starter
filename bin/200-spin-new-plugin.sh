@@ -6,14 +6,45 @@
 source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"/header.sh
 
 printf '[info] creating new folder with the plugin slug provided in plugin-env file.\n'
+
 ## copy folder template, first make sure output dir is empty
 rm -rf $ROOT_DIR/output/*
-cp -rf $ROOT_DIR/template $ROOT_DIR/output/$PROJECT_SLUG
+cp -rf $ROOT_DIR/template $PLUGIN_DIR
+
 ## check if copy was successful - should have a new folder named as the plugin's slug
-if [ -d "$ROOT_DIR/output/$PROJECT_SLUG" ]; then
-  printf "[info] Folder with plugin slug $PROJECT_SLUG created. Proceeding further..\n"
+if [ -d "$PLUGIN_DIR" ]; then
+  printf "[info] Folder with plugin slug $PROJECT_SLUG created in output folder\n"
+  printf "[info] Proceeding further..\n"
 else
-    printf "NOT OK plugins"
+    printf "[error] NOT OK the previous copy did not seem to have worked"
+    printf "[error] Cannot find plugin at: %s" "$PLUGIN_DIR"
+    exit
+fi
+
+## Rename template.php as {slug}.php
+if [ -e "$PLUGIN_DIR/template.php" ]; then
+  mv $PLUGIN_DIR/template.php "$PLUGIN_DIR/$PROJECT_SLUG.php"
+  printf "[info] Renamed templated.php to $PROJECT_SLUG.php. \n"
+else
+    printf "[error] cannot find template.php at: %s" "$PLUGIN_DIR"
+    exit
+fi
+
+## Rename template_plugin_helper.php as {slug}_plugin_helper.php
+if [ -e "$PLUGIN_DIR/src/template_plugin_helper.php" ]; then
+  mv $PLUGIN_DIR/src/template_plugin_helper.php "$PLUGIN_DIR/src/${PROJECT_SLUG}_plugin_helper.php"
+  printf "[info] Renamed templated.php to ${PROJECT_SLUG}_plugin_helper.php \n"
+else
+    printf "[error] cannot find template_plugin_helper.php at: %s" "$PLUGIN_DIR/src"
+    exit
+fi
+
+## Rename template.js as {slug}.js
+if [ -e "$PLUGIN_DIR/assets/js/template.js" ]; then
+  mv $PLUGIN_DIR/assets/js/template.js "$PLUGIN_DIR/assets/js/$PROJECT_SLUG.js"
+  printf "[info] Renamed js file templated.js to $PROJECT_SLUG.js. \n"
+else
+    printf "[error] cannot find js file template.js at: %s" "$PLUGIN_DIR/assets/js/"
     exit
 fi
 
