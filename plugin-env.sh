@@ -5,7 +5,6 @@
 ### @github wkhayrattee
 ### @license GPL-3.0-only
 ##
-
 AUTHOR_NAME="Wasseem Khayrattee"
 AUTHOR_WP_ORG_USERNAME="wkhayrattee"
 AUTHOR_EMAIL="github@wk.contact"
