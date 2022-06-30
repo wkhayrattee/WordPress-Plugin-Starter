@@ -75,6 +75,30 @@ else
     exit
 fi
 #
+## Rename keys in file: README.md
+#
+if [ -e "$PLUGIN_DIR/README.md" ]; then
+  printf "[info] Scanning inside file README.md \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PROJECT_NAME%|$PROJECT_NAME|g; \
+   s|%AUTHOR_NAME%|$AUTHOR_NAME|g; \
+   s|%AUTHOR_WP_ORG_USERNAME%|$AUTHOR_WP_ORG_USERNAME|g; \
+   s|%WP_MINIMUM_VERSION%|$WP_MINIMUM_VERSION|g; \
+   s|%WP_TESTED_UPTO_VERSION%|$WP_TESTED_UPTO_VERSION|g; \
+   s|%LICENCE%|$LICENCE|g; \
+   s|%LICENCE_URI%|$LICENCE_URI|g; \
+   s|%PROJECT_GITHUB%|$PROJECT_GITHUB|g; \
+  " \
+  "$PLUGIN_DIR/README.md"
+
+  printf "[info] Renamed all keys for:  README.md\n\n"
+else
+    printf "[error] Cannot find file README.md at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
 ## Rename keys in file: template.php
 #
 TEMPLATE_PHP_FILE="$PROJECT_SLUG.php"
