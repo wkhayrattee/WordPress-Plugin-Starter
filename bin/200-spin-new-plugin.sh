@@ -158,3 +158,22 @@ else
     printf "[error] Cannot find file $ENUM_PHP_FILE at: %s" "$PLUGIN_DIR"
     exit
 fi
+#
+## Rename keys in file: PluginManager.php
+#
+PLUGINMANAGER_PHP_FILE="PluginManager.php"
+if [ -e "$PLUGIN_DIR/src/Core/$PLUGINMANAGER_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $PLUGINMANAGER_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+   s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+  " \
+  "$PLUGIN_DIR/src/Core/$PLUGINMANAGER_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $PLUGINMANAGER_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $PLUGINMANAGER_PHP_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
