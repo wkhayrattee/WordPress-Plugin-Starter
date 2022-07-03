@@ -212,6 +212,25 @@ else
     exit
 fi
 #
+## Rename keys in file: Dashboard.php
+#
+ADMIN_DASHBORD_PHP_FILE="Dashboard.php"
+if [ -e "$PLUGIN_DIR/src/Core/Admin/$ADMIN_DASHBORD_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $ADMIN_DASHBORD_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+   s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+  " \
+  "$PLUGIN_DIR/src/Core/Admin/$ADMIN_DASHBORD_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $ADMIN_DASHBORD_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $ADMIN_DASHBORD_PHP_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
 ## finally we remove all .remove files if on MAC
 #
 if [ "$IS_MAC_OS" = "YES"  ]; then
