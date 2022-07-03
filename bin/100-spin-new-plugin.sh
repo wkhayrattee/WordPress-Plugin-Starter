@@ -201,3 +201,14 @@ else
     printf "[error] Cannot find file $PLUGINMANAGER_PHP_FILE at: %s" "$PLUGIN_DIR"
     exit
 fi
+#
+## finally we remove all .remove files if on MAC
+#
+if [ "$IS_MAC_OS" = "YES"  ]; then
+  printf "[info] Removing all .remove files since we are on Mac \n"
+  find $PLUGIN_DIR \( -type f -name '*.remove' \) -delete
+fi
+#
+##
+#
+printf "[info] All done!\n"
