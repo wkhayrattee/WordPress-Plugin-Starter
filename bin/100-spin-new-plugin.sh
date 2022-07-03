@@ -53,6 +53,16 @@ else
     exit
 fi
 #
+## Rename template.css as {slug}.css
+#
+if [ -e "$PLUGIN_DIR/assets/css/template.css" ]; then
+  mv $PLUGIN_DIR/assets/css/template.css "$PLUGIN_DIR/assets/css/$PROJECT_SLUG.css"
+  printf "[info] Renamed js file templated.css to $PROJECT_SLUG.css. \n\n"
+else
+    printf "[error] Cannot find js file template.css at: %s" "$PLUGIN_DIR/assets/css/"
+    exit
+fi
+#
 ## Rename keys in file: readme.txt
 #
 if [ -e "$PLUGIN_DIR/readme.txt" ]; then
