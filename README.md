@@ -1,5 +1,5 @@
 # wp-plugin-starter
-A util to quickly generate a minimalist plugin skeleton to ease the process of creating a new custom WordPress plugin.
+A util to quickly generate a minimalist plugin skeleton to ease the process of creating a new custom WordPress plugin; with a gentle OOP flavor & support for php-composer workflow.
 
 ## About
 
