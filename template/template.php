@@ -67,8 +67,13 @@ register_activation_hook(__FILE__, ['%PSR4_NAMESPACE%\\PluginManager', 'plugin_a
 register_deactivation_hook(__FILE__, ['%PSR4_NAMESPACE%\\PluginManager', 'plugin_deactivation']);
 
 /**
- * Load the admin page interface
+ * Load the admin page interface & Admin logic
  */
 if (is_admin()) {
     add_action('init', ['%PSR4_NAMESPACE%\\PluginManager', 'adminInit']);
 }
+
+/**
+ * Load general frontend logic & background processes
+ */
+\%PSR4_NAMESPACE%\PluginManager::run();
