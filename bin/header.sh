@@ -6,13 +6,15 @@
 export DEBIAN_FRONTEND=noninteractive
 #
 ## To add `sed` support on both OSX and Linux
-## ref: https://stackoverflow.com/a/66763713
+## The ref in (https://stackoverflow.com/a/66763713) did not work
+## For a work-around, I am going to just pass a file extension to sed on Mac, which we will delete in the end
 #
-PORTABLE_SED_OPTION=
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  PORTABLE_SED_OPTION="-i \x27\x27"
+  IS_MAC_OS='YES'
+  PORTABLE_SED_OPTION="-i .remove"
 else
-  PORTABLE_SED_OPTION='-i';
+  IS_MAC_OS='NO'
+  PORTABLE_SED_OPTION='-i'
 fi;
 #
 ## get current dir path for our main git repo
