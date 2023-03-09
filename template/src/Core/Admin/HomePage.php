@@ -14,13 +14,21 @@ class HomePage
     public function registerMenu()
     {
         add_menu_page(
-            'Home',
+            null,
+            '%PROJECT_NAME%',
+            Enum::ADMIN_PAGE_CAPABILITY,
+            Enum::ADMIN_PAGE_PARENT_SLUG,
+            null,
+            'dashicons-editor-removeformatting',
+            21
+        );
+        add_submenu_page(
+            Enum::ADMIN_PAGE_PARENT_SLUG,
+            'Home Page',
             'Home',
             Enum::ADMIN_PAGE_CAPABILITY,
             Enum::ADMIN_PAGE_PARENT_SLUG,
-            [self::class, 'render_page_elements'],
-            'dashicons-editor-removeformatting',
-            21
+            [self::class, 'render_page_elements']
         );
     }
 
