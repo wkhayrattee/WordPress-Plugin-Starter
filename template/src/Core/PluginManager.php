@@ -46,7 +46,7 @@ class PluginManager
     }
 
     /**
-     * Render the admin pages
+     * Admin facing logic
      */
     public static function adminInit()
     {
@@ -62,6 +62,27 @@ class PluginManager
             return;
         }
 
+        self::start();
+    }
+
+    public static function start()
+    {
+        //todo: initialise environment vars
+        self::initEnvironmentVars();
+
+        //todo: register/override hooks..etc
+    }
+
+    public static function initEnvironmentVars()
+    {
+        //example
+//        if (isset($_ENV[Enum::ENV_API_KEY])) {
+//            define('API_KEY', trim($_ENV[Enum::ENV_API_KEY]));
+//        }
+    }
+
+    public static function doAdminUI()
+    {
         new Dashboard();
     }
 }
