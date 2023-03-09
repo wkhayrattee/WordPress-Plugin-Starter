@@ -231,6 +231,24 @@ else
     exit
 fi
 #
+## Rename keys in file: HomePage.php
+#
+ADMIN_HOMEPAGE_PHP_FILE="HomePage.php"
+if [ -e "$PLUGIN_DIR/src/Core/Admin/$ADMIN_HOMEPAGE_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $ADMIN_HOMEPAGE_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+   s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+  " \
+  "$PLUGIN_DIR/src/Core/Admin/$ADMIN_HOMEPAGE_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $ADMIN_HOMEPAGE_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $ADMIN_HOMEPAGE_PHP_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
 ## Rename keys in file: LogPage.php
 #
 ADMIN_LOGPAGE_PHP_FILE="LogPage.php"
