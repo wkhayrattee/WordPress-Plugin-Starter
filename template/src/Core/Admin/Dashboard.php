@@ -6,10 +6,12 @@ use %PSR4_NAMESPACE%\Enum;
 
 class Dashboard
 {
+    private $home_page;
     private $log_page;
 
     public function __construct()
     {
+        $this->home_page = new HomePage();
         $this->log_page = new LogPage();
 
         //register hooks
@@ -46,6 +48,7 @@ class Dashboard
      */
     public function admin_menu_callback()
     {
+        $this->home_page->registerMenu();
         $this->log_page->registerMenu();
     }
 
