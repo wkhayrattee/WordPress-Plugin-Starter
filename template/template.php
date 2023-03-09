@@ -54,6 +54,7 @@ define('%PHP_CONSTANT_PREFIX%_PLUGIN_DIR_URL', plugin_dir_url(__FILE__)); //has 
 define('%PHP_CONSTANT_PREFIX%_PLUGIN_DIR', plugin_dir_path(__FILE__)); //has trailing slash at end
 define('%PHP_CONSTANT_PREFIX%_PLUGIN_BASENAME', plugin_basename(%PHP_CONSTANT_PREFIX%_PLUGIN_DIR));
 define('%PHP_CONSTANT_PREFIX%_PLUGIN_VIEWS', %PHP_CONSTANT_PREFIX%_PLUGIN_DIR . 'views' . DIRECTORY_SEPARATOR);
+define('%PHP_CONSTANT_PREFIX%_PLUGIN_ERROR_LOG_FILE', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . '%PROJECT_SLUG%_message.log');
 
 /**
  * load our main file now with composer autoloading
@@ -67,10 +68,11 @@ register_activation_hook(__FILE__, ['%PSR4_NAMESPACE%\\PluginManager', 'plugin_a
 register_deactivation_hook(__FILE__, ['%PSR4_NAMESPACE%\\PluginManager', 'plugin_deactivation']);
 
 /**
- * Load the admin page interface & Admin logic
+ * Load the Admin-facing logic
  */
 if (is_admin()) {
     add_action('init', ['%PSR4_NAMESPACE%\\PluginManager', 'adminInit']);
+    \%PSR4_NAMESPACE%\PluginManager::doAdminUI();
 }
 
 /**
