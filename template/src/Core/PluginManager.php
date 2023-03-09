@@ -3,6 +3,8 @@
 namespace %PSR4_NAMESPACE%;
 
 use %PSR4_NAMESPACE%\Admin\Dashboard;
+use %PSR4_NAMESPACE%\Enum;
+use %PSR4_NAMESPACE%\Admin\LogPage;
 
 class PluginManager
 {
@@ -25,7 +27,7 @@ class PluginManager
      */
     public static function plugin_deactivation()
     {
-
+        self::do_cleanup();
     }
 
     /**
@@ -35,6 +37,13 @@ class PluginManager
     {
         //cleanup portion
         //clear any database fields initially created by this plugin
+        self::do_cleanup();
+    }
+
+    public static function do_cleanup()
+    {
+        delete_option(Enum::ADMIN_PAGE_OPTION_NAME);
+        LogPage::clearErrorLog(%PHP_CONSTANT_PREFIX%_PLUGIN_ERROR_LOG_FILE);
     }
 
     /**
