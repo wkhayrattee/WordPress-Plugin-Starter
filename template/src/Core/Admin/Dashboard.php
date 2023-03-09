@@ -2,10 +2,16 @@
 
 namespace %PSR4_NAMESPACE%\Admin;
 
+use %PSR4_NAMESPACE%\Enum;
+
 class Dashboard
 {
+    private $log_page;
+
     public function __construct()
     {
+        $this->log_page = new LogPage();
+
         //register hooks
         add_action('admin_init', [$this, 'admin_init_callback']);
         add_action('admin_menu', [$this, 'admin_menu_callback']);
@@ -23,7 +29,8 @@ class Dashboard
      */
     public function admin_init_callback()
     {
-
+        // Register a new setting for our page.
+        register_setting(Enum::ADMIN_PAGE_OPTION_GROUP, Enum::ADMIN_PAGE_OPTION_NAME);
     }
 
     /**
@@ -39,7 +46,7 @@ class Dashboard
      */
     public function admin_menu_callback()
     {
-
+        $this->log_page->registerMenu();
     }
 
     /**
