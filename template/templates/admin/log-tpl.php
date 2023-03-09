@@ -15,7 +15,7 @@ $txtlog_value = get_query_var('txtlog_value');
 ?>
 <div class="wrap">
     <h1><?php echo $title; ?></h1>
-    <h3>Use the Log below to spot any error during the API calls</h3>
+    <h3>Use the Log below to spot any error during using this plugin</h3>
     <form name="log_page_form" action="" method="post">
         <?php settings_errors(Enum::ADMIN_PAGE_LOG_SLUG); ?>
         <table class="form-table">
