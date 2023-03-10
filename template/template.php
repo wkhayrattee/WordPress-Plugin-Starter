@@ -71,7 +71,7 @@ register_deactivation_hook(__FILE__, ['%PSR4_NAMESPACE%\\PluginManager', 'plugin
  * Load the Admin-facing logic
  */
 if (is_admin()) {
-    add_action('init', ['%PSR4_NAMESPACE%\\PluginManager', 'adminInit']);
+    add_action('init', ['%PSR4_NAMESPACE%\\PluginManager', 'admin_init']);
     \%PSR4_NAMESPACE%\PluginManager::doAdminUI();
 }
 
