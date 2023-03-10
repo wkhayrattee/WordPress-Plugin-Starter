@@ -27,7 +27,7 @@ class PluginManager
      */
     public static function plugin_deactivation()
     {
-        self::do_cleanup();
+        self::doCleanup();
     }
 
     /**
@@ -37,10 +37,10 @@ class PluginManager
     {
         //cleanup portion
         //clear any database fields initially created by this plugin
-        self::do_cleanup();
+        self::doCleanup();
     }
 
-    public static function do_cleanup()
+    public static function doCleanup()
     {
         delete_option(Enum::ADMIN_PAGE_OPTION_NAME);
         LogPage::clearErrorLog(%PHP_CONSTANT_PREFIX%_PLUGIN_ERROR_LOG_FILE);
@@ -57,7 +57,7 @@ class PluginManager
     /**
      * Admin facing logic
      */
-    public static function adminInit()
+    public static function admin_init()
     {
         //if on plugin activation
         if (get_option(Enum::PLUGIN_KEY)) {
