@@ -212,6 +212,25 @@ else
     exit
 fi
 #
+## Rename keys in file: Utils.php
+#
+UTILS_PHP_FILE="Utils.php"
+if [ -e "$PLUGIN_DIR/src/Core/$UTILS_PHP_FILE" ]; then
+  printf "[info] Scanning inside file $UTILS_PHP_FILE \n"
+
+  sed $PORTABLE_SED_OPTION \
+  "s|%PROJECT_SLUG%|$PROJECT_SLUG|g; \
+   s|%PSR4_NAMESPACE%|$PSR4_NAMESPACE|g; \
+   s|%PHP_CONSTANT_PREFIX%|$PHP_CONSTANT_PREFIX|g; \
+  " \
+  "$PLUGIN_DIR/src/Core/$UTILS_PHP_FILE"
+
+  printf "[info] Renamed all keys for:  $UTILS_PHP_FILE\n\n"
+else
+    printf "[error] Cannot find file $UTILS_PHP_FILE at: %s" "$PLUGIN_DIR"
+    exit
+fi
+#
 ## Rename keys in file: Dashboard.php
 #
 ADMIN_DASHBORD_PHP_FILE="Dashboard.php"
