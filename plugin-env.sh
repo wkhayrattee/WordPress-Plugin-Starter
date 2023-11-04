@@ -13,7 +13,13 @@ AUTHOR_URI="https://github.com/wkhayrattee"
 PROJECT_SLUG="my-custom-plugin-name"
 PROJECT_NAME="My Custom Plugin Name"
 PROJECT_GITHUB="todo_github_url"
-#
+##
+### According to the Composer docs, the naming convention for a Composer namespace is as follows:
+### - must be lowercase
+### - must consist of words separated by -, ., or _
+### - must match the regular expression: ^a-z0-9: [_. -]?[a-z0-9]+*/a-z0-9: ([_.] |-{1,2}?[a-z0-9]+)*$
+### Reference: https://getcomposer.org/doc/04-schema.md#name
+##
 COMPOSER_NAMESPACE="wkhayrattee"
 ## Should be CamelCase
 PSR4_NAMESPACE="MyCustomPlugin"
