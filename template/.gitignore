@@ -4,6 +4,7 @@
 .svn
 .cvs
 .php_cs.cache
+.php-cs-fixer.cache
 *.bak
 *.swp
 Thumbs.db
