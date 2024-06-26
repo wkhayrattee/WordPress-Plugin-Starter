@@ -19,7 +19,7 @@ class HomePage
             Enum::ADMIN_PAGE_CAPABILITY,
             Enum::ADMIN_PAGE_PARENT_SLUG,
             null,
-            'dashicons-editor-removeformatting',
+            '%PROJECT_MENU_ICON%',
             21
         );
         add_submenu_page(

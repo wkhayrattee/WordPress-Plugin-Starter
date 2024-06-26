@@ -14,6 +14,12 @@ PROJECT_SLUG="my-custom-plugin-name"
 PROJECT_NAME="My Custom Plugin Name"
 PROJECT_GITHUB="todo_github_url"
 ##
+### Dashicons is the official icon font of the WordPress admin as of 3.8
+### To choose an icon, see: https://developer.wordpress.org/resource/dashicons/
+### To use an icon, add the class `dashicons-{icon-name}` to an HTML element.
+##
+PROJECT_MENU_ICON="dashicons-admin-generic"
+##
 ### According to the Composer docs, the naming convention for a Composer namespace is as follows:
 ### - must be lowercase
 ### - must consist of words separated by -, ., or _
