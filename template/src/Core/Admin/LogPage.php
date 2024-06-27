@@ -53,11 +53,11 @@ class LogPage
      * Fetches all error lines from the log files
      * Method Will always return a message, an error message in case of any failure
      *
-     * @param $log_file_path
+     * @param string $log_file_path
      *
      * @return string
      */
-    public static function fetchLogData($log_file_path): string
+    public static function fetchLogData(string $log_file_path): string
     {
         $log_file = $log_file_path;
         $max_lines = 100;
@@ -108,11 +108,11 @@ class LogPage
     /**
      * Util to help clear the log file
      *
-     * @param $log_file_path
+     * @param string $log_file_path
      *
      * @return bool
      */
-    public static function clearErrorLog($log_file_path): bool
+    public static function clearErrorLog(string $log_file_path): bool
     {
         if (!file_exists($log_file_path)) {
             add_settings_error(Enum::ADMIN_PAGE_LOG_SLUG, Enum::ADMIN_PAGE_LOG_SLUG . '_message', 'The log seems empty!', 'warn');

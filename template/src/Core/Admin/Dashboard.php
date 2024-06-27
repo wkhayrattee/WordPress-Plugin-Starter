@@ -29,7 +29,7 @@ class Dashboard
      *
      * ref: https://developer.wordpress.org/reference/hooks/admin_init/
      */
-    public function admin_init_callback()
+    public function admin_init_callback(): void
     {
         // Register a new setting for our page.
         register_setting(Enum::ADMIN_PAGE_OPTION_GROUP, Enum::ADMIN_PAGE_OPTION_NAME);
@@ -46,7 +46,7 @@ class Dashboard
      *
      * ref: https://developer.wordpress.org/reference/hooks/admin_menu/
      */
-    public function admin_menu_callback()
+    public function admin_menu_callback(): void
     {
         $this->home_page->registerMenu();
         $this->log_page->registerMenu();
@@ -55,7 +55,7 @@ class Dashboard
     /**
      * To load assets files (e.g: css & js) for Admins creen
      */
-    public function load_resources_callback()
+    public function load_resources_callback(): void
     {
         $screen = get_current_screen();
 
